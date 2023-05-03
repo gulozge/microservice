@@ -19,7 +19,7 @@ import java.util.UUID;
 public interface ModelService {
     List<GetAllModelsResponse> getAll();
     GetModelResponse getById(UUID id);
-    CreateModelResponse add(CreateModelRequest createBrandRequest);
+    CreateModelResponse add(CreateModelRequest request);
     UpdateModelResponse update(UUID id , UpdateModelRequest request);
     void delete(UUID id);
 }

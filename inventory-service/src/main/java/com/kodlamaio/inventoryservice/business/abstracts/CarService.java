@@ -19,7 +19,7 @@ import java.util.UUID;
 public interface CarService {
     List<GetAllCarsResponse> getAll();
     GetCarResponse getById(UUID id);
-    CreateCarResponse add(CreateCarRequest createBrandRequest);
+    CreateCarResponse add(CreateCarRequest request);
     UpdateCarResponse update(UUID id , UpdateCarRequest request);
     void delete(UUID id);
 }
