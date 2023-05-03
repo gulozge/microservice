@@ -1,12 +1,12 @@
-package com.example.inventoryservice.business.concretes;
+package com.kodlamaio.inventoryservice.business.concretes;
 
-import com.example.inventoryservice.business.abstracts.BrandService;
-import com.example.inventoryservice.business.dto.request.create.CreateBrandRequest;
-import com.example.inventoryservice.business.dto.request.update.UpdateBrandRequest;
-import com.example.inventoryservice.business.dto.response.create.CreateBrandResponse;
-import com.example.inventoryservice.business.dto.response.get.GetAllBrandsResponse;
-import com.example.inventoryservice.business.dto.response.get.GetBrandResponse;
-import com.example.inventoryservice.business.dto.response.update.UpdateBrandResponse;
+import com.kodlamaio.inventoryservice.business.abstracts.BrandService;
+import com.kodlamaio.inventoryservice.business.dto.request.create.CreateBrandRequest;
+import com.kodlamaio.inventoryservice.business.dto.request.update.UpdateBrandRequest;
+import com.kodlamaio.inventoryservice.business.dto.response.create.CreateBrandResponse;
+import com.kodlamaio.inventoryservice.business.dto.response.get.GetAllBrandsResponse;
+import com.kodlamaio.inventoryservice.business.dto.response.get.GetBrandResponse;
+import com.kodlamaio.inventoryservice.business.dto.response.update.UpdateBrandResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

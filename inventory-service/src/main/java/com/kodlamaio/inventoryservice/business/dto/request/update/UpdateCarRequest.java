@@ -1,6 +1,6 @@
-package com.example.inventoryservice.business.dto.request.update;
+package com.kodlamaio.inventoryservice.business.dto.request.update;
 
-import com.example.inventoryservice.entities.enums.State;
+import com.kodlamaio.inventoryservice.entities.enums.State;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,12 +16,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateCarRequest {
-    @NotBlank
     @NotNull
     private UUID modelId;
     @Min(value = 200)
     private int modelYear;
-    @NotNull
     @NotBlank
     private String plate;
    @NotNull

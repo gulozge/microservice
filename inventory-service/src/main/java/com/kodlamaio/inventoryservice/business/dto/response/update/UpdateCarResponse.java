@@ -1,6 +1,6 @@
-package com.example.inventoryservice.business.dto.response.update;
+package com.kodlamaio.inventoryservice.business.dto.response.update;
 
-import com.example.inventoryservice.entities.enums.State;
+import com.kodlamaio.inventoryservice.entities.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

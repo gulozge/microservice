@@ -1,12 +1,13 @@
-package com.example.inventoryservice.business.concretes;
+package com.kodlamaio.inventoryservice.business.concretes;
 
-import com.example.inventoryservice.business.abstracts.CarService;
-import com.example.inventoryservice.business.dto.request.create.CreateCarRequest;
-import com.example.inventoryservice.business.dto.request.update.UpdateCarRequest;
-import com.example.inventoryservice.business.dto.response.create.CreateCarResponse;
-import com.example.inventoryservice.business.dto.response.get.GetAllCarsResponse;
-import com.example.inventoryservice.business.dto.response.get.GetCarResponse;
-import com.example.inventoryservice.business.dto.response.update.UpdateCarResponse;
+import com.kodlamaio.inventoryservice.business.abstracts.CarService;
+import com.kodlamaio.inventoryservice.business.dto.request.create.CreateCarRequest;
+import com.kodlamaio.inventoryservice.business.dto.request.update.UpdateCarRequest;
+import com.kodlamaio.inventoryservice.business.dto.response.create.CreateCarResponse;
+import com.kodlamaio.inventoryservice.business.dto.response.get.GetAllCarsResponse;
+import com.kodlamaio.inventoryservice.business.dto.response.get.GetCarResponse;
+import com.kodlamaio.inventoryservice.business.dto.response.update.UpdateCarResponse;
+import com.kodlamaio.inventoryservice.business.dto.response.get.GetCarResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

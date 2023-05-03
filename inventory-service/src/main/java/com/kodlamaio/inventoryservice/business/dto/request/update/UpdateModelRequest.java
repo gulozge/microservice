@@ -1,4 +1,4 @@
-package com.example.inventoryservice.business.dto.request.update;
+package com.kodlamaio.inventoryservice.business.dto.request.update;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -15,7 +15,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateModelRequest {
-    @NotBlank
     @NotNull
     private UUID brandId;
     @NotBlank

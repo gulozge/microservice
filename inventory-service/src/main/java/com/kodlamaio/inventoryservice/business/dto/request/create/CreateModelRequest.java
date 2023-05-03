@@ -1,4 +1,4 @@
-package com.example.inventoryservice.business.dto.request.create;
+package com.kodlamaio.inventoryservice.business.dto.request.create;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -15,7 +15,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateModelRequest {
-    @NotBlank
     @NotNull
     private UUID brandId;
     @NotBlank

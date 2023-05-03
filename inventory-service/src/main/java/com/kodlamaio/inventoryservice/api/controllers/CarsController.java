@@ -1,4 +1,4 @@
-package com.example.inventoryservice.api.controllers;
+package com.kodlamaio.inventoryservice.api.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;

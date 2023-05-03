@@ -1,4 +1,4 @@
-package com.example.inventoryservice.business.dto.response.get;
+package com.kodlamaio.inventoryservice.business.dto.response.get;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
-package com.example.inventoryservice.business.dto.response.create;
+package com.kodlamaio.inventoryservice.business.dto.response.create;
 
-import com.example.inventoryservice.entities.enums.State;
+import com.kodlamaio.inventoryservice.entities.enums.State;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;

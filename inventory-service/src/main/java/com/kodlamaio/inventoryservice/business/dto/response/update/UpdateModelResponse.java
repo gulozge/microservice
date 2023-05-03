@@ -1,4 +1,4 @@
-package com.example.inventoryservice.business.dto.response.update;
+package com.kodlamaio.inventoryservice.business.dto.response.update;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
