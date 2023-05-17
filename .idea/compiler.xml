@@ -9,8 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway" />
         <module name="filter-service" />
-        <module name="inventory-service" />
         <module name="discovery-server" />
+        <module name="inventory-service" />
         <module name="common-package" />
       </profile>
     </annotationProcessing>

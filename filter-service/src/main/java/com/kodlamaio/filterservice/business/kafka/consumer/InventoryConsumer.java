@@ -1,0 +1,45 @@
+package com.kodlamaio.filterservice.business.kafka.consumer;
+
+import com.kodlamaio.commonpackage.events.BrandDeletedEvent;
+import com.kodlamaio.commonpackage.events.CarCreatedEvent;
+import com.kodlamaio.commonpackage.events.CarDeletedEvent;
+import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
+import com.kodlamaio.filterservice.business.abstracts.FilterService;
+import com.kodlamaio.filterservice.entities.Filter;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class InventoryConsumer {
+    private final FilterService service;
+    private final ModelMapperService mapper;
+
+    @KafkaListener(
+            topics = "car_created",
+            groupId = "car_create"
+    )
+    public void consume(CarCreatedEvent event){
+        var filter=mapper.forRequest().map(event, Filter.class);
+        service.add(filter);
+        log.info("car created event consumed {}",event);
+    }
+    @KafkaListener(
+            topics = "car_deleted",
+            groupId = "car_delete"
+    )
+    public void consume(CarDeletedEvent event){
+        service.deleteByCarId(event.getCarId());
+        log.info("car deleted event consumed {}",event);
+    }
+    @KafkaListener(
+            topics = "brand_deleted",
+            groupId = "brand_delete"
+    )
+    public void consume(BrandDeletedEvent event){
+        service.deleteAllByBrandId(event.getBrandId());
+        log.info("brand deleted event consumed {}",event);
+    }
+}

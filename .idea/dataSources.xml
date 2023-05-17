@@ -8,7 +8,7 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/inventorydb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="@localhost" uuid="1b08fb33-0623-4f6f-9132-9b2a3a50cea2">
+    <data-source source="LOCAL" name="@localhost" uuid="8cc529af-4c2c-44b4-8ddd-36bfd0d4982d">
       <driver-ref>mongo</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>

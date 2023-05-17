@@ -1,6 +1,5 @@
-package com.kodlamaio.inventoryservice.business.dto.response.get;
+package com.kodlamaio.commonpackage.events;
 
-import com.kodlamaio.inventoryservice.entities.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,13 +11,15 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllCarsResponse {
-    private UUID id;
+public class CarCreatedEvent {
+    private UUID carId;
     private UUID modelId;
+    private UUID brandId;
     private int modelYear;
     private String plate;
-    private State state;
+    private String state;
     private double dailyPrice;
     private String modelName;
     private String modelBrandName;
 }
+

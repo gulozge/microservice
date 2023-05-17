@@ -16,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Filter {
     @Id
-    private UUID id;
+    private String id;
     private UUID carId;
     private UUID modelId;
     private UUID brandId;
@@ -26,6 +26,4 @@ public class Filter {
     private int modelYear;
     private double dailyPrice;
     private String state;
-
-
 }
