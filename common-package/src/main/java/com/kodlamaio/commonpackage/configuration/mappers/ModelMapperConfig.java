@@ -1,4 +1,4 @@
-package com.kodlamaio.filterservice.configuration;
+package com.kodlamaio.commonpackage.configuration.mappers;
 
 import com.kodlamaio.commonpackage.utils.mappers.ModelMapperManager;
 import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
@@ -17,3 +17,4 @@ public class ModelMapperConfig {
         return new ModelMapperManager(mapper);
     }
 }
+

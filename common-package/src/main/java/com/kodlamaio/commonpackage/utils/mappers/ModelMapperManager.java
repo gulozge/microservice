@@ -6,7 +6,7 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.stereotype.Service;
 
-@Service
+
 @AllArgsConstructor
 public class ModelMapperManager implements ModelMapperService{
     private ModelMapper mapper;

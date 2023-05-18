@@ -1,17 +1,15 @@
-package com.kodlamaio.commonpackage.events;
+package com.kodlamaio.commonpackage.utils.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class CarDeletedEvent {
-    private UUID carId;
+public class ClientResponse {
+    private boolean isSuccess;
+    private String message;
 }
