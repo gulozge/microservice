@@ -1,7 +1,6 @@
 package com.kodlamaio.inventoryservice.business.kafka.consumer;
 
 import com.kodlamaio.commonpackage.events.maintenance.MaintenanceCreatedEvent;
-import com.kodlamaio.commonpackage.events.maintenance.MaintenanceDeletedEvent;
 import com.kodlamaio.commonpackage.events.maintenance.MaintenanceReturnedEvent;
 import com.kodlamaio.inventoryservice.business.abstracts.CarService;
 import com.kodlamaio.inventoryservice.entities.enums.State;
@@ -23,15 +22,6 @@ public class MaintenanceConsumer {
     public void consume(MaintenanceCreatedEvent event) {
         service.changeStateByCarId(State.Maintenance, event.getCarId());
         log.info("Maintenance created event consumed {}", event);
-    }
-
-    @KafkaListener(
-            topics = "maintenance-deleted",
-            groupId = "inventory-maintenance-delete"
-    )
-    public void consume(MaintenanceDeletedEvent event) {
-        service.changeStateByCarId(State.Available, event.getCarId());
-        log.info("Maintenance deleted event consumed {}", event);
     }
 
     @KafkaListener(

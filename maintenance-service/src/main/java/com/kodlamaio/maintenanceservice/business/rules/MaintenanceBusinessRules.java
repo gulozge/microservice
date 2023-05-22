@@ -3,6 +3,7 @@ package com.kodlamaio.maintenanceservice.business.rules;
 import com.kodlamaio.commonpackage.utils.constants.Messages;
 import com.kodlamaio.commonpackage.utils.exceptions.BusinessException;
 import com.kodlamaio.maintenanceservice.api.clients.CarClient;
+import com.kodlamaio.maintenanceservice.entities.Maintenance;
 import com.kodlamaio.maintenanceservice.repository.MaintenanceRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,10 @@ public class MaintenanceBusinessRules {
             throw new BusinessException(response.getMessage());
         }
 
+    }
+    public void checkIfIsCompleted(Maintenance maintenance){
+        if(!maintenance.isCompleted()){
+            throw new BusinessException("please return car before delete maintenance!!!");
+        }
     }
 }

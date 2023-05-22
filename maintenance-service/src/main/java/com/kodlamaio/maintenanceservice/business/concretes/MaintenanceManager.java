@@ -1,7 +1,6 @@
 package com.kodlamaio.maintenanceservice.business.concretes;
 
 import com.kodlamaio.commonpackage.events.maintenance.MaintenanceCreatedEvent;
-import com.kodlamaio.commonpackage.events.maintenance.MaintenanceDeletedEvent;
 import com.kodlamaio.commonpackage.events.maintenance.MaintenanceReturnedEvent;
 import com.kodlamaio.commonpackage.kafka.producer.KafkaProducer;
 import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
@@ -94,13 +93,9 @@ public class MaintenanceManager implements MaintenanceService {
     @Override
     public void delete(UUID id) {
         rules.checkIfMaintenanceExists(id);
-        sendKafkaMaintenanceDeletedEvent(id);
+        Maintenance maintenance=repository.findById(id).orElseThrow();
+        rules.checkIfIsCompleted(maintenance);
         repository.deleteById(id);
-    }
-
-    private void sendKafkaMaintenanceDeletedEvent(UUID id) {
-        var carId = repository.findById(id).orElseThrow().getCarId();
-        producer.sendMessage(new MaintenanceDeletedEvent(carId), "maintenance-deleted");
     }
 
     private void sendKafkaMaintenanceReturnedEvent(UUID carId) {
