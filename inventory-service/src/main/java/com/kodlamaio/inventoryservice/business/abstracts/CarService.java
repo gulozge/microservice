@@ -1,17 +1,11 @@
 package com.kodlamaio.inventoryservice.business.abstracts;
 
 import com.kodlamaio.commonpackage.utils.dto.ClientResponse;
-import com.kodlamaio.inventoryservice.business.dto.request.create.CreateBrandRequest;
 import com.kodlamaio.inventoryservice.business.dto.request.create.CreateCarRequest;
-import com.kodlamaio.inventoryservice.business.dto.request.update.UpdateBrandRequest;
 import com.kodlamaio.inventoryservice.business.dto.request.update.UpdateCarRequest;
-import com.kodlamaio.inventoryservice.business.dto.response.create.CreateBrandResponse;
 import com.kodlamaio.inventoryservice.business.dto.response.create.CreateCarResponse;
-import com.kodlamaio.inventoryservice.business.dto.response.get.GetAllBrandsResponse;
 import com.kodlamaio.inventoryservice.business.dto.response.get.GetAllCarsResponse;
-import com.kodlamaio.inventoryservice.business.dto.response.get.GetBrandResponse;
-import com.kodlamaio.inventoryservice.business.dto.response.get.GetCarResponse;
-import com.kodlamaio.inventoryservice.business.dto.response.update.UpdateBrandResponse;
+import com.kodlamaio.commonpackage.utils.dto.GetCarResponse;
 import com.kodlamaio.inventoryservice.business.dto.response.update.UpdateCarResponse;
 import com.kodlamaio.inventoryservice.entities.enums.State;
 

@@ -7,7 +7,7 @@ services:
       - '9092:9092'
     volumes:
       - kafka_data:/opt/kafka/kafka-logs
-  mongodb:
+  mongodb_filter:
     container_name: turkcell2-filterdb
     image: mongo
     ports:
@@ -15,6 +15,13 @@ services:
     volumes:
       - mongodb_data:/data/db
 
+  mongodb_invoice:
+    container_name: turkcell2-invoicedb
+    image: mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data2:/data/db
 
   inventorydb:
     container_name: inventorydb
@@ -32,3 +39,4 @@ volumes:
   kafka_data:
   mongodb_data:
   inventorydb:
+  mongodb_data2:

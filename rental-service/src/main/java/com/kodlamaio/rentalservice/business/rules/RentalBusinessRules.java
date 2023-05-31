@@ -1,11 +1,11 @@
 package com.kodlamaio.rentalservice.business.rules;
 
-import com.kodlamaio.commonpackage.utils.dto.ClientResponse;
-import com.kodlamaio.commonpackage.utils.dto.CreateRentalPaymentRequest;
-import com.kodlamaio.commonpackage.utils.dto.PaymentRequest;
+import com.kodlamaio.commonpackage.utils.dto.*;
 import com.kodlamaio.commonpackage.utils.exceptions.BusinessException;
 import com.kodlamaio.rentalservice.api.clients.CarClient;
 import com.kodlamaio.rentalservice.api.clients.PaymentClient;
+import com.kodlamaio.rentalservice.business.dto.requests.CreateRentalRequest;
+import com.kodlamaio.rentalservice.entities.Rental;
 import com.kodlamaio.rentalservice.repository.RentalRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,5 +36,17 @@ public class RentalBusinessRules {
         if (!response.isSuccess()) {
             throw new BusinessException(response.getMessage());
         }
+    }
+    public void ensureInvoiceInRental(CreateRentalRequest request, CreateInvoiceRequest invoiceRequest, Rental rental){
+        GetCarResponse car = carClient.checkIfCarInRental(request.getCarId());
+
+        invoiceRequest.setRentedAt(rental.getRentedAt());
+        invoiceRequest.setModelName(car.getModelName());
+        invoiceRequest.setBrandName(car.getModelBrandName());
+        invoiceRequest.setDailyPrice(request.getDailyPrice());
+        invoiceRequest.setRentedForDays(request.getRentedForDays());
+        invoiceRequest.setCardHolder(request.getPaymentRequest().getCardHolder());
+        invoiceRequest.setPlate(car.getPlate());
+        invoiceRequest.setModelYear(car.getModelYear());
     }
 }
