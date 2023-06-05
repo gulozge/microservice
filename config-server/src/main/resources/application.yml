@@ -6,6 +6,6 @@ spring:
       server:
         default-label: master
         git:
-          uri: https://github.com/gulozge/config-server-t1.git
+          uri: https://github.com/gulozge/config-server-t2.git
 server:
   port: 8888
