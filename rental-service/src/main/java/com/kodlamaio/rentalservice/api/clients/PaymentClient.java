@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "payment-service", fallback = PaymentClientFallback.class)
 public interface PaymentClient {
     //TODO: check
-    @PostMapping(value = "/api/payments/process")
+    @PostMapping(value = "/api/payments/check")
     ClientResponse processRentalPayment(@RequestBody CreateRentalPaymentRequest request);
 
 }

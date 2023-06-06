@@ -48,7 +48,7 @@ public class PaymentsController {
     }
 
 
-    @PostMapping ("/process")
+    @PostMapping ("/check")
     public ClientResponse processRentalPayment(@RequestBody CreateRentalPaymentRequest request) {
        return service.processRentalPayment(request);
     }
