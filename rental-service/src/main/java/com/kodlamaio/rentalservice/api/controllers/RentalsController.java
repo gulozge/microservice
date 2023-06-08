@@ -10,6 +10,8 @@ import com.kodlamaio.rentalservice.business.dto.responses.UpdateRentalResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,8 +35,8 @@ public class RentalsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateRentalResponse add(@Valid @RequestBody CreateRentalRequest request) {
-        return service.add(request);
+    public CreateRentalResponse add(@Valid @RequestBody CreateRentalRequest request, @AuthenticationPrincipal Jwt jwt) {
+        return service.add(request,jwt);
     }
 
     @PutMapping("/{id}")

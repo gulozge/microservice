@@ -11,6 +11,11 @@ import com.kodlamaio.inventoryservice.business.dto.response.update.UpdateCarResp
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +28,9 @@ public class CarsController {
     private final CarService service;
 
     @GetMapping
+    //Secured(daha basit kurallar için),PreAuthorize,PostAuthorize
+    //@Secured("ROLE_admin")
+    @PreAuthorize("hasRole('user') and hasRole('admin')") //("hasanyRole('user','admin'))
     public List<GetAllCarsResponse> getAll(){
         return service.getAll();
     }

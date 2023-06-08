@@ -1,5 +1,6 @@
 package com.kodlamaio.rentalservice.business.rules;
 
+import com.kodlamaio.commonpackage.events.rental.InvoiceCreatedEvent;
 import com.kodlamaio.commonpackage.utils.dto.*;
 import com.kodlamaio.commonpackage.utils.exceptions.BusinessException;
 import com.kodlamaio.rentalservice.api.clients.CarClient;
@@ -8,6 +9,7 @@ import com.kodlamaio.rentalservice.business.dto.requests.CreateRentalRequest;
 import com.kodlamaio.rentalservice.entities.Rental;
 import com.kodlamaio.rentalservice.repository.RentalRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -37,16 +39,18 @@ public class RentalBusinessRules {
             throw new BusinessException(response.getMessage());
         }
     }
-    public void ensureInvoiceInRental(CreateRentalRequest request, CreateInvoiceRequest invoiceRequest, Rental rental){
+    public InvoiceCreatedEvent createInvoice(CreateRentalRequest request, Rental rental, Jwt jwt){
+        InvoiceCreatedEvent event =new InvoiceCreatedEvent();
         GetCarResponse car = carClient.checkIfCarInRental(request.getCarId());
-
-        invoiceRequest.setRentedAt(rental.getRentedAt());
-        invoiceRequest.setModelName(car.getModelName());
-        invoiceRequest.setBrandName(car.getModelBrandName());
-        invoiceRequest.setDailyPrice(request.getDailyPrice());
-        invoiceRequest.setRentedForDays(request.getRentedForDays());
-        invoiceRequest.setCardHolder(request.getPaymentRequest().getCardHolder());
-        invoiceRequest.setPlate(car.getPlate());
-        invoiceRequest.setModelYear(car.getModelYear());
+        event.setCustomerId((String) jwt.getClaims().get("sub"));
+        event.setRentedAt(rental.getRentedAt());
+        event.setModelName(car.getModelName());
+        event.setBrandName(car.getModelBrandName());
+        event.setDailyPrice(request.getDailyPrice());
+        event.setRentedForDays(request.getRentedForDays());
+        event.setCardHolder(request.getPaymentRequest().getCardHolder());
+        event.setPlate(car.getPlate());
+        event.setModelYear(car.getModelYear());
+        return event;
     }
 }

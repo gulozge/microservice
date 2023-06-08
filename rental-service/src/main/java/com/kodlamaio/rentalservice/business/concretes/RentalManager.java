@@ -1,15 +1,13 @@
 package com.kodlamaio.rentalservice.business.concretes;
 
+import com.kodlamaio.commonpackage.events.Event;
 import com.kodlamaio.commonpackage.events.rental.InvoiceCreatedEvent;
 import com.kodlamaio.commonpackage.events.rental.RentalCreatedEvent;
 import com.kodlamaio.commonpackage.events.rental.RentalDeletedEvent;
 import com.kodlamaio.commonpackage.kafka.producer.KafkaProducer;
-import com.kodlamaio.commonpackage.utils.dto.CreateInvoiceRequest;
 import com.kodlamaio.commonpackage.utils.dto.CreateRentalPaymentRequest;
-import com.kodlamaio.commonpackage.utils.dto.GetCarResponse;
 import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
 
-import com.kodlamaio.rentalservice.api.clients.PaymentClient;
 import com.kodlamaio.rentalservice.business.abstracts.RentalService;
 import com.kodlamaio.rentalservice.business.dto.requests.CreateRentalRequest;
 import com.kodlamaio.rentalservice.business.dto.requests.UpdateRentalRequest;
@@ -21,9 +19,9 @@ import com.kodlamaio.rentalservice.business.rules.RentalBusinessRules;
 import com.kodlamaio.rentalservice.entities.Rental;
 import com.kodlamaio.rentalservice.repository.RentalRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -57,7 +55,7 @@ public class RentalManager implements RentalService {
     }
 
     @Override
-    public CreateRentalResponse add(CreateRentalRequest request) {
+    public CreateRentalResponse add(CreateRentalRequest request,Jwt jwt) {
         rules.ensureCarIsAvailable(request.getCarId());
         var rental = mapper.forRequest().map(request, Rental.class);
         rental.setId(null);
@@ -71,9 +69,9 @@ public class RentalManager implements RentalService {
         repository.save(rental);
         sendKafkaRentalCreatedEvent(request.getCarId());
 
-        CreateInvoiceRequest invoiceRequest = new CreateInvoiceRequest();
-        rules.ensureInvoiceInRental(request, invoiceRequest, rental);
-        sendKafkaInvoiceCreatedEvent(invoiceRequest);
+
+        var event= rules.createInvoice(request,rental,jwt);
+        sendKafkaInvoiceCreatedEvent(event);
         var response = mapper.forResponse().map(rental, CreateRentalResponse.class);
         return response;
     }
@@ -108,9 +106,8 @@ public class RentalManager implements RentalService {
         var carId = repository.findById(id).orElseThrow().getCarId();
         producer.sendMessage(new RentalDeletedEvent(carId), "rental-deleted");
     }
-    private void sendKafkaInvoiceCreatedEvent(CreateInvoiceRequest invoiceCreated) {
-        var event = mapper.forResponse().map(invoiceCreated, InvoiceCreatedEvent.class);
-        producer.sendMessage(event, "invoice-created");
+    private void sendKafkaInvoiceCreatedEvent(Event event) {
+        producer.sendMessage(event,"invoice-created");
     }
 
 }
