@@ -16,6 +16,7 @@ import com.kodlamaio.paymentservice.business.rules.PaymentBusinessRules;
 import com.kodlamaio.paymentservice.entities.Payment;
 import com.kodlamaio.paymentservice.repository.PaymentRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,10 +49,11 @@ public class PaymentManager implements PaymentService {
     }
 
     @Override
-    public CreatePaymentResponse add(CreatePaymentRequest request) {
+    public CreatePaymentResponse add(CreatePaymentRequest request, Jwt jwt) {
         rules.checkIfCardExists(request.getCardNumber());
         var payment = mapper.forRequest().map(request, Payment.class);
         payment.setId(null);
+        payment.setCustomerId((String)jwt.getClaims().get("sub"));
         repository.save(payment);
         var response = mapper.forResponse().map(payment, CreatePaymentResponse.class);
         return response;

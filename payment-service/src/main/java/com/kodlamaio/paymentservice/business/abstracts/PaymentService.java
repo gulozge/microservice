@@ -8,6 +8,7 @@ import com.kodlamaio.paymentservice.business.dto.responses.create.CreatePaymentR
 import com.kodlamaio.paymentservice.business.dto.responses.get.GetAllPaymentsResponse;
 import com.kodlamaio.paymentservice.business.dto.responses.get.GetPaymentResponse;
 import com.kodlamaio.paymentservice.business.dto.responses.update.UpdatePaymentResponse;
+import org.springframework.security.oauth2.jwt.Jwt;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,7 +18,7 @@ public interface PaymentService {
 
     GetPaymentResponse getById(UUID id);
 
-    CreatePaymentResponse add(CreatePaymentRequest request);
+    CreatePaymentResponse add(CreatePaymentRequest request, Jwt jwt);
 
     UpdatePaymentResponse update(UUID id, UpdatePaymentRequest request);
 

@@ -18,6 +18,7 @@ import java.util.UUID;
 public class Invoice {
     @Id
     private String id;
+    private String customerId;
     private String cardHolder;
     private String modelName;
     private String brandName;

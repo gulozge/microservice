@@ -14,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UpdateInvoiceResponse {
     private String id;
+    private String customerId;
     private String cardHolder;
     private String modelName;
     private String brandName;

@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class InvoiceCreatedEvent implements Event {
+    private String customerId;
     private String cardHolder;
     private String modelName;
     private String brandName;

@@ -13,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class CreatePaymentResponse {
     private UUID id;
+    private UUID customerId;
     private String cardNumber;
     private String cardHolder;
     private int cardExpirationYear;
