@@ -1,6 +1,6 @@
 package com.kodlamaio.invoiceservice.business.abstracts;
 
-import com.kodlamaio.commonpackage.utils.dto.CreateInvoiceRequest;
+import com.kodlamaio.invoiceservice.business.dto.requests.CreateInvoiceRequest;
 import com.kodlamaio.invoiceservice.business.dto.requests.UpdateInvoiceRequest;
 import com.kodlamaio.invoiceservice.business.dto.responses.CreateInvoiceResponse;
 import com.kodlamaio.invoiceservice.business.dto.responses.GetAllInvoicesResponse;

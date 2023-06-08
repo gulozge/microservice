@@ -2,7 +2,7 @@ package com.kodlamaio.invoiceservice.business.concretes;
 
 import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
 import com.kodlamaio.invoiceservice.business.abstracts.InvoiceService;
-import com.kodlamaio.commonpackage.utils.dto.CreateInvoiceRequest;
+import com.kodlamaio.invoiceservice.business.dto.requests.CreateInvoiceRequest;
 import com.kodlamaio.invoiceservice.business.dto.requests.UpdateInvoiceRequest;
 import com.kodlamaio.invoiceservice.business.dto.responses.CreateInvoiceResponse;
 import com.kodlamaio.invoiceservice.business.dto.responses.GetAllInvoicesResponse;
