@@ -1,5 +1,6 @@
 package com.kodlamaio.inventoryservice.api.controllers;
 
+import com.kodlamaio.commonpackage.utils.constants.Roles;
 import com.kodlamaio.commonpackage.utils.dto.ClientResponse;
 import com.kodlamaio.inventoryservice.business.abstracts.CarService;
 import com.kodlamaio.inventoryservice.business.dto.request.create.CreateCarRequest;
@@ -30,7 +31,7 @@ public class CarsController {
     @GetMapping
     //Secured(daha basit kurallar için),PreAuthorize,PostAuthorize
     //@Secured("ROLE_admin")
-    @PreAuthorize("hasRole('user') and hasRole('admin')") //("hasanyRole('user','admin'))
+    @PreAuthorize(Roles.AdminAndUser) //("hasanyRole('user','admin'))
     public List<GetAllCarsResponse> getAll(){
         return service.getAll();
     }
